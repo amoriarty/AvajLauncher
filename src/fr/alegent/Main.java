@@ -1,16 +1,34 @@
 package fr.alegent;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class Main {
 
     public static void main(String[] args) {
-        AircraftFactory factory = new AircraftFactory();
+        WeatherTower tower = new WeatherTower();
+        Scenario scenario;
+
+        if (args.length == 0) {
+            System.err.println("Error: Main: You have to passed a scenario file as parameter.");
+            return;
+        }
 
         try {
-            Flyable baloon = factory.newAircraft("Baloon", "baloon", 1, 1, 1);
-            Flyable jetPlane = factory.newAircraft("JetPlane", "jetplane", 2, 2, 2);
-            Flyable helicopter = factory.newAircraft("Helicopter", "helicopter", 3, 4, 5);
-        } catch (AircraftFactory.TypeException e) {
-            System.out.println(e.toString());
+            scenario = new Scenario(args[0]);
+
+            for (Flyable flyable: scenario.flyables) {
+                flyable.registerTower(tower);
+            }
+
+            for (int i = 0; i <= scenario.simulations; i++) {
+                tower.changeWeather();
+            }
+
+        } catch (Exception e) {
+            System.err.println(e.toString());
         }
+
     }
 }
