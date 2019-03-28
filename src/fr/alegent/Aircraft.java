@@ -13,6 +13,14 @@ class Aircraft {
     }
 
     private long nextId() {
-        return idCounter++;
+        return ++idCounter;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
     }
 }

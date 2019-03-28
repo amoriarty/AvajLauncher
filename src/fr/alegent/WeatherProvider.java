@@ -13,6 +13,11 @@ class WeatherProvider {
     }
 
     public String getCurrentWeather(Coordinates coordinates) {
-        return weather.get(coordinates);
+        return weather.computeIfAbsent(coordinates, coordinates1 -> newWeather());
+    }
+
+    // TODO: Generate random weather.
+    private String newWeather() {
+        return "SUN";
     }
 }
