@@ -1,10 +1,11 @@
 package fr.alegent;
 
-import java.util.HashMap;
+import java.util.Date;
+import java.util.Random;
 
 class WeatherProvider {
     private static WeatherProvider weatherProvider = new WeatherProvider();
-    private static HashMap<Coordinates, String> weather = new HashMap<>();
+    private static String[] weather = { "RAIN", "SNOW", "FOG", "SUN" };
 
     WeatherProvider() { }
 
@@ -13,11 +14,13 @@ class WeatherProvider {
     }
 
     public String getCurrentWeather(Coordinates coordinates) {
-        return weather.computeIfAbsent(coordinates, coordinates1 -> newWeather());
-    }
-
-    // TODO: Generate random weather.
-    private String newWeather() {
-        return "SUN";
+        int index = 0;
+        int now = (int) new Date().getTime();
+        int seed = new Random(now).nextInt();
+        seed = new Random(coordinates.getLatitude() + seed).nextInt();
+        seed = new Random(coordinates.getLatitude() + seed).nextInt();
+        seed = new Random(coordinates.getHeight() - seed).nextInt();
+        index = new Random(seed).nextInt(4);
+        return weather[index];
     }
 }
