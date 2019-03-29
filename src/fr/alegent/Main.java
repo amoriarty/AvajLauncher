@@ -6,8 +6,8 @@ public class Main {
         WeatherTower tower = new WeatherTower();
         Scenario scenario;
 
-        if (args.length == 0) {
-            System.err.println("Error: Main: You have to passed a scenario file as parameter.");
+        if (args.length != 1) {
+            System.err.println("Error: Main: You have to passed one scenario file as parameter.");
             return;
         }
 
