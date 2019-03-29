@@ -17,7 +17,7 @@ class WeatherProvider {
         int index = 0;
         int now = (int) new Date().getTime();
         int seed = new Random(now).nextInt();
-        seed = new Random(coordinates.getLatitude() + seed).nextInt();
+        seed = new Random(coordinates.getLongitude() + seed).nextInt();
         seed = new Random(coordinates.getLatitude() + seed).nextInt();
         seed = new Random(coordinates.getHeight() - seed).nextInt();
         index = new Random(seed).nextInt(4);

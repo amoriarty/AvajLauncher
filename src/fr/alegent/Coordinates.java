@@ -22,4 +22,46 @@ class Coordinates {
     public int getHeight() {
         return height;
     }
+
+    public void setLongitude(int longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setLatitude(int latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setHeight(int height) {
+        if (height < 0) {
+            this.height = 0;
+        } else if (height > 100) {
+            this.height = 100;
+        } else {
+            this.height = height;
+        }
+    }
+
+    public void increaseLongitude(int by) {
+        setLongitude(this.longitude + by);
+    }
+
+    public void decreaseLongitude(int by) {
+        setLongitude(this.longitude - by);
+    }
+
+    public void increaseLatitude(int by) {
+        setLatitude(this.latitude + by);
+    }
+
+    public void decreaseLatitude(int by) {
+        setLatitude(this.latitude - by);
+    }
+
+    public void increaseHeight(int by) {
+        setHeight(this.height + by);
+    }
+
+    public void decreaseHeight(int by) {
+        setHeight(this.height - by);
+    }
 }
