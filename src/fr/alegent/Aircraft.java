@@ -2,6 +2,7 @@ package fr.alegent;
 
 class Aircraft {
     protected long id;
+    protected String type;
     protected String name;
     protected Coordinates coordinates;
     private static long idCounter = 0;
@@ -16,11 +17,19 @@ class Aircraft {
         return ++idCounter;
     }
 
-    public long getId() {
-        return id;
+    public String getIdentifiable() {
+        return type + "#" + name + "(" + id + ")";
     }
 
-    public String getName() {
-        return name;
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public void land() {
+        System.out.println(getIdentifiable() + " landing.");
+    }
+
+    protected void updateConditions() {
+        System.out.print(getIdentifiable() + ": ");
     }
 }

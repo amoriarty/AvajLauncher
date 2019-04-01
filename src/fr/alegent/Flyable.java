@@ -1,8 +1,9 @@
 package fr.alegent;
 
 interface Flyable {
-    Boolean getUnregistered();
-    String getType();
+    String getIdentifiable();
+    Coordinates getCoordinates();
+    void land();
     void updateConditions();
     void registerTower(WeatherTower weatherTower);
 }

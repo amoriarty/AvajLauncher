@@ -42,26 +42,18 @@ class Coordinates {
     }
 
     public void increaseLongitude(int by) {
-        setLongitude(this.longitude + by);
-    }
-
-    public void decreaseLongitude(int by) {
-        setLongitude(this.longitude - by);
+        setLongitude(longitude + by);
     }
 
     public void increaseLatitude(int by) {
-        setLatitude(this.latitude + by);
-    }
-
-    public void decreaseLatitude(int by) {
-        setLatitude(this.latitude - by);
+        setLatitude(latitude + by);
     }
 
     public void increaseHeight(int by) {
-        setHeight(this.height + by);
+        setHeight(height + by);
     }
 
     public void decreaseHeight(int by) {
-        setHeight(this.height - by);
+        setHeight(height - by);
     }
 }
